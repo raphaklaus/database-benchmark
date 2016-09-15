@@ -1,0 +1,24 @@
+{
+  "name": "database-benchmark",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/raphaklaus/database-benchmark.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/raphaklaus/database-benchmark/issues"
+  },
+  "homepage": "https://github.com/raphaklaus/database-benchmark#readme",
+  "dependencies": {
+    "bookshelf": "^0.10.1",
+    "knex": "^0.12.0",
+    "pg": "^6.1.0"
+  }
+}
