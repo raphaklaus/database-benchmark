@@ -1,4 +1,4 @@
-var knex = require('knex')({
+const knex = require('knex')({
   client: 'postgres',
   connection: {
     host     : 'localhost',
@@ -9,20 +9,52 @@ var knex = require('knex')({
   }
 });
 
-var bookshelf = require('bookshelf')(knex);
+const data = require('./data_pg.json'),
+  bookshelf = require('bookshelf')(knex),
+  Category = bookshelf.Model.extend({
+    tableName: 'category',
+    post: function() {
+      return this.hasMany(Post);
+    }
+  }),
+  Post = bookshelf.Model.extend({
+    tableName: 'post',
+    category: function() {
+      return this.belongsTo(Category);
+    },
+    user: function() {
+      return this.belongsTo(User)
+    }
+  }),
+  User = bookshelf.Model.extend({
+    tableName: 'user',
+    post: function() {
+      return this.hasMany(Post);
+    }
+  }),
+  bunyan = require('bunyan'),
+  logger = bunyan.createLogger({
+    name: 'pg'
+  });
 
-var Post = bookshelf.Model.extend({
-  tableName: 'post'
-});
+module.exports = class PG {
+  static createPost() {
+    logger.info('Using Postgres');
+    return new Post(data.dataPost).save();
+  }
 
-var Category = bookshelf.Model.extend({
-  tableName: 'category'
-});
+  static createUser() {
+    logger.info('Using Postgres');
+    return new User(data.dataUser).save();
+  }
 
-// new Post({title: 'teste', description:'asdasd'}).save().then((model) => {
-//   console.log('Created model!!');
-// })
+  static createCategory() {
+    logger.info('Using Postgres');
+    return new Category(data.dataCategory).save();
+  }
 
-// new Category({name: 'Fun'}).save().then((model) => {
-//   console.log('Created model!!');
-// })
+  static getPosts() {
+    logger.info('Using Postgres');
+    return new Post().fetchAll({withRelated:['category', 'user']});
+  }
+}
