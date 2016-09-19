@@ -10,7 +10,7 @@ const logger = bunyan.createLogger({
 mongoose.connect('mongodb://localhost/benchmark');
 mongoose.Promise = global.Promise;
 
-var userSchema = new Schema({
+const userSchema = new Schema({
   name: String,
   bio: String,
   sales: Number,
@@ -26,15 +26,26 @@ var userSchema = new Schema({
   }]
 });
 
+const User = mongoose.model('User', userSchema);
+var data = require('./data_mongodb.json');
+
 module.exports = class MongoDB {
   static createPost() {
     logger.info('Using MongoDB');
-    return userSchema.save();
+    var posts = [];
+
+    for (let i = 0; i < Math.floor(Math.random() * 15) + 1; i++) {
+      posts.push(data.dataPost);
+    }
+
+    var user = data.dataUser;
+    user.posts = posts;
+
+    return new User(user).save();
   }
 
-  static getPost() {
+  static getPosts() {
     logger.info('Using MongoDB');
-    return userSchema.find().exec()
-    })
+    return User.find().exec()
   }
 }

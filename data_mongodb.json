@@ -3,14 +3,15 @@
     "name": "Klaus",
     "bio": "Labore eiusmod amet cupidatat commodo culpa exercitation ipsum. Officia et sit ullamco incididunt eiusmod anim ipsum officia occaecat est. Exercitation pariatur ipsum ut ut nostrud eu duis. Aliquip mollit mollit do anim magna ad velit anim eu deserunt anim commodo duis. Do aliquip fugiat quis ullamco amet et Lorem et proident ex consequat duis id non nisi dolore dolor. Quis in est sint amet nulla sunt qui. Et ad irure sunt ea ut esse adipisicing in ipsum nulla officia.",
     "sales": 10,
-    "views": 300,
-    "dataPost": {
-      "title": "Pariatur fugiat eiusmod mollit do duis reprehenderit Lorem Lorem quis ea aliquip.",
-      "description": "Eiusmod labore ea eiusmod mollit exercitation laborum excepteur sunt fugiat labore laboris culpa occaecat exercitation. Dolor labore aute culpa sit cillum anim sit eu eiusmod magna in quis. Reprehenderit nostrud cupidatat amet excepteur aute qui dolor eiusmod sit nulla quis commodo incididunt ex laboris. Mollit incididunt occaecat irure velit nisi dolor non aute qui irure culpa duis velit anim laboris. Esse voluptate excepteur velit voluptate mollit aliquip mollit voluptate in quis nisi excepteur enim.",
-      "value": 1233.20,
-      "tags": "Anim elit amet incididunt labore veniam do Lorem adipisicing est ea aliquip.",
-      "dataCategory": {
-        "name": "Fun"
-      }
+    "views": 300
+  },
+  "dataPost": {
+    "title": "Pariatur fugiat eiusmod mollit do duis reprehenderit Lorem Lorem quis ea aliquip.",
+    "description": "Eiusmod labore ea eiusmod mollit exercitation laborum excepteur sunt fugiat labore laboris culpa occaecat exercitation. Dolor labore aute culpa sit cillum anim sit eu eiusmod magna in quis. Reprehenderit nostrud cupidatat amet excepteur aute qui dolor eiusmod sit nulla quis commodo incididunt ex laboris. Mollit incididunt occaecat irure velit nisi dolor non aute qui irure culpa duis velit anim laboris. Esse voluptate excepteur velit voluptate mollit aliquip mollit voluptate in quis nisi excepteur enim.",
+    "value": 1233.20,
+    "tags": "Anim elit amet incididunt labore veniam do Lorem adipisicing est ea aliquip.",
+    "category": {
+      "name": "Fun"
     }
+  }
 }
