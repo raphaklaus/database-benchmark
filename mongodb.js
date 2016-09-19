@@ -10,38 +10,36 @@ const logger = bunyan.createLogger({
 mongoose.connect('mongodb://localhost/benchmark');
 mongoose.Promise = global.Promise;
 
+const postSchema = new Schema({
+  title: String,
+  description: String,
+  value: Number,
+  tags: String,
+  category: {
+    name: String
+  },
+  author: {type: mongoose.Schema.Types.ObjectId, ref: 'User'}
+});
+
 const userSchema = new Schema({
   name: String,
   bio: String,
   sales: Number,
-  views: Number,
-  posts: [{
-    title: String,
-    description: String,
-    value: Number,
-    tags: String,
-    category: {
-      name: String
-    }
-  }]
+  views: Number
 });
 
 const User = mongoose.model('User', userSchema);
-var data = require('./data_mongodb.json');
+const Post = mongoose.model('Post', postSchema);
+var data = require('./data_mongodb_second_model.json');
 
 module.exports = class MongoDB {
+  static createUser() {
+    return new User(data.dataUser).save();
+  }
+
   static createPost() {
     logger.info('Using MongoDB');
-    var posts = [];
-
-    for (let i = 0; i < Math.floor(Math.random() * 15) + 1; i++) {
-      posts.push(data.dataPost);
-    }
-
-    var user = data.dataUser;
-    user.posts = posts;
-
-    return new User(user).save();
+    return new Post(data.dataPost).save();
   }
 
   static getPosts() {

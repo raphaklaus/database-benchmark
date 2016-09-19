@@ -46,3 +46,10 @@ app.post('/posts_mongo', (req, res) => {
     res.json(model);
   });
 });
+
+app.post('/users_mongo', (req, res) => {
+  mongoDB.createUser().then(model => {
+    logger.info(`POST users: ${JSON.stringify(model)}`);
+    res.json(model);
+  });
+});
